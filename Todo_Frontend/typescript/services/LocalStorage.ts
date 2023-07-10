@@ -1,6 +1,5 @@
-// const ToDo = require('./Todo.js');
 import ServiceInterface from './Serviceinterface.js';
-import ToDo from './Todo.js';
+import ToDo from '../models/Todo.js';
 
 export default class LocalService implements ServiceInterface {
 

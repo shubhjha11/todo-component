@@ -1,16 +1,12 @@
-import ServiceInterface from "./Serviceinterface.js";
-import ToDo from "./Todo.js";
-
-export default class RemoteService implements ServiceInterface {
+import ToDo from "../models/Todo.js";
+export default class RemoteService {
     url = 'http://localhost:12000';
-
     async getAllTodos() {
         const response = await fetch(this.url);
         const data = await response.json();
         return data;
     }
-
-    async addTodo (text: string, completed: boolean) {
+    async addTodo(text, completed) {
         const response = await fetch(this.url, {
             method: 'POST',
             body: JSON.stringify(new ToDo(text, completed)),
@@ -20,20 +16,17 @@ export default class RemoteService implements ServiceInterface {
         });
         return await response.json();
     }
-
-    async getTodo (id: number) {
+    async getTodo(id) {
         const response = await fetch(`${this.url}/${id}`);
         return await response.json();
     }
-
-    async updateTodo (id: number) {
+    async updateTodo(id) {
         const response = await fetch(`${this.url}/${id}`, {
             method: 'PUT'
         });
         return await response.json();
     }
-
-    async deleteTodo (id: number) {
+    async deleteTodo(id) {
         const response = await fetch(`${this.url}/${id}`, {
             method: 'DELETE'
         });

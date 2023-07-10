@@ -1,4 +1,4 @@
-import ToDo from "./Todo";
+import ToDo from "../models/Todo";
 
 export default interface ServiceInterface {
     addTodo(text: string, completed: boolean): Promise<ToDo>;

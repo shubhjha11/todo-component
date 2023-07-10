@@ -18,7 +18,7 @@ app.post("/", (req, res) => {
     //? req.body is the body of the request that we can access now
     const body = req.body;
 
-    const lastId = todoList.at(-1).id + 1 ?? 1;
+    const lastId = todoList.at(-1)?.id + 1 ?? 1;
     const todo = {
         id: lastId, 
         task: body.task, 
